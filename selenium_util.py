@@ -115,6 +115,13 @@ class DriverBase(metaclass=ABCMeta):
         if enter:
             elemento.send_keys(Keys.ENTER)
 
+    def manipula_alerta(self, acao='aceitar'):
+        """Aceita ou descarta um alerta."""
+        if acao.lower() == 'aceitar':
+            self._driver.switch_to.alert.accept()
+        else:
+            self._driver.switch_to.alert.dismiss()
+            
     def retorna_atributo_elemento(self, tipo_seletor, seletor, atributo):
         """Busca e retorna um atributo do elemento."""
         self._aguarda_carregamento()
